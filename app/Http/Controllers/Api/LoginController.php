@@ -24,8 +24,6 @@ class LoginController extends Controller{
         		'scope' => '',
     		],
 		]);
-        $access_token=json_decode((string)$response->getBody())->access_token;
-        User::where('email',$request->email)->update(['access_token'=>$access_token]);
 		return $this->response->item(json_decode((string)$response->getBody()), new LoginTransformer);
 	}
 }
