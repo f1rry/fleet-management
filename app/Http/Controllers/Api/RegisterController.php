@@ -26,7 +26,7 @@ class RegisterController extends Controller
             'driver_id' => 0
         ]);
         $token=$user->createToken('MyApp')->accessToken;
-        $data=$user->first();
+        $data=$user;
         $data->token=$token;
 
         return $this->response->item($data,new RegisterTransformer);

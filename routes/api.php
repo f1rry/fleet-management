@@ -12,34 +12,7 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-/*
-Route::post('users','Api\RegisterController@register_user');
-Route::get('infos','Api\RegisterController@information_for_register');
-Route::post('login','Api\LoginController@login');
 
-Route::middleware('auth:api')->group(function(){
-	Route::post('roles','Api\RegisterController@register_role');
-
-	//
-	Route::get('fleets','Api\FleetController@show');
-	Route::post('fleets','Api\FleetController@add');		
-	Route::patch('fleets/{id}','Api\FleetController@update');
-	Route::delete('fleets/{id}','Api\FleetController@delete');
-
-	//
-	Route::get('drivers','Api\DriverController@show');
-	Route::post('drivers','Api\DriverController@add');		
-	Route::patch('drivers/{id}','Api\DriverController@update');
-	Route::delete('drivers/{id}','Api\DriverController@delete');
-
-	//
-	Route::get('cars','Api\CarController@show');
-	Route::post('cars','Api\CarController@add');		
-	Route::patch('cars/{id}','Api\CarController@update');
-	Route::delete('cars/{id}','Api\CarController@delete');
-
-});
-*/
 /*
 	* 用户登录 POST /api/v1/login 
     * 用户注册 POST /api/v1/user
@@ -63,8 +36,10 @@ $api->version('v1',function($api){
 	$api->group(['namespace' => 'App\Http\Controllers\Api'], function ($api) {
 		$api->post('user','RegisterController@register_user');
 		$api->post('login','LoginController@login');
-
 		$api->group(['middleware' => 'auth:api'],function ($api){
+			$api->get('users','UserController@show');
+			$api->get('logout','UserController@logout');
+			
 			//车队管理模块
 			$api->get('fleets','FleetController@show');
 			$api->post('fleet','FleetController@add');

@@ -18,4 +18,8 @@ class UserPolicy
     {
         //
     }
+
+    public show(User $user){
+        return $user->isSuperAdmin()||$user->isFleetAdmin();
+    }
 }

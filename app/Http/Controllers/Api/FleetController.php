@@ -49,7 +49,7 @@ class FleetController extends Controller
        	$this->authorize('update',Fleet::class);
         $fleet=Fleet::where('id','=',$fleet_id);
         try{
-            DB::transaction(function () use ($request,$fleet) {
+            DB::transaction(function () use ($request,$fleet,$fleet_id) {
                 $fleet->update([
         			'fleet_name' => $request->fleet_name,
         			'user_id' => $request->user_id,
