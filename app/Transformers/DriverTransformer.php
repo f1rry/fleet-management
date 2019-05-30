@@ -14,7 +14,8 @@ class DriverTransformer extends TransformerAbstract
 			'name' =>$driver->name,
 			'old' =>$driver->old,
 			'sex' =>$driver->sex,
-			'fleet_id' =>$driver->fleet_id
+			'fleet_id' =>$driver->fleet_id，
+			'user_id'=>$driver->user_id
 		];
 	}
 }
